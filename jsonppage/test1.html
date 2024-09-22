@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.header, .footer {
+  background-color: #eee;
+  text-align: center;
+  padding: 20px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.chart-container {
+  width: 30%;
+}
+
+.bottom-section {
+  margin-top: 20px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-table th, .user-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #f2f2f2;
+}
+
+.footer {
+  margin-top: 20px;
+  background-color: #ddd;
+  padding: 10px 0;
+}
+
+</style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1>Dashboard Header</h1>
+  </header>
+
+  <!-- Content Section -->
+  <div class="content">
+    <div class="top-section">
+      <div class="chart-container">
+        <canvas id="pieChart1"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="pieChart2"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="pieChart3"></canvas>
+      </div>
+    </div>
+
+    <div class="bottom-section">
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Role</th>
+            <th>Join Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>Admin</td>
+            <td>2022-01-15</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Editor</td>
+            <td>2023-05-08</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2024 Company Name. All Rights Reserved.</p>
+  </footer>
+
+<script>
+    // Pie chart data and initialization
+function loadPieCharts() {
+  const data1 = [30, 70];
+  const data2 = [50, 50];
+  const data3 = [20, 80];
+
+  // Chart 1
+  const ctx1 = document.getElementById('pieChart1').getContext('2d');
+  new Chart(ctx1, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: data1,
+        backgroundColor: ['#ff6384', '#36a2eb'],
+      }],
+      labels: ['Red', 'Blue']
+    }
+  });
+
+  // Chart 2
+  const ctx2 = document.getElementById('pieChart2').getContext('2d');
+  new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: data2,
+        backgroundColor: ['#4bc0c0', '#ffcd56'],
+      }],
+      labels: ['Green', 'Yellow']
+    }
+  });
+
+  // Chart 3
+  const ctx3 = document.getElementById('pieChart3').getContext('2d');
+  new Chart(ctx3, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: data3,
+        backgroundColor: ['#9966ff', '#ff9f40'],
+      }],
+      labels: ['Purple', 'Orange']
+    }
+  });
+}
+
+window.onload = loadPieCharts;
+
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Holy Grail Layout</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+ <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  padding-top: 70px; /* Space for fixed header */
+  padding-bottom: 50px; /* Space for fixed footer */
+}
+
+.sidebar-left, .sidebar-right {
+  background-color: #f8f9fa;
+  padding: 20px;
+  width: 200px;
+  min-height: calc(100vh - 120px); /* Header + Footer height */
+}
+
+.sidebar-left ul, .sidebar-right ul {
+  list-style-type: none;
+}
+
+.sidebar-left li, .sidebar-right li {
+  margin-bottom: 15px;
+}
+
+.sidebar-left li i {
+  margin-right: 10px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #e9ecef;
+}
+
+.main-content h2 {
+  margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar-left, .sidebar-right {
+    display: none;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 70px 10px 50px 10px; /* Adjust padding for header and footer */
+  }
+}
+
+ </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1>Header</h1>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="container">
+    <!-- Left Sidebar -->
+    <nav class="sidebar-left">
+      <ul>
+        <li><i class="bi bi-house-door"></i> Home</li>
+        <li><i class="bi bi-bar-chart"></i> Dashboard</li>
+        <li><i class="bi bi-people"></i> Users</li>
+        <li><i class="bi bi-box-arrow-right"></i> Logout</li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h2>Main Content</h2>
+      <p>This is the main content area with some dummy text. Resize the window to see how the layout adjusts.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Cras aliquet nisl et ligula facilisis, ut suscipit felis vehicula.</p>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="sidebar-right">
+      <h3>Related Links</h3>
+      <ul>
+        <li>Link 1</li>
+        <li>Link 2</li>
+        <li>Link 3</li>
+        <li>Link 4</li>
+      </ul>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Footer © 2024 Company Name. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .cart-icon {
+            position: relative;
+            font-size: 24px;
+            margin-left: 20px;
+        }
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 12px;
+        }
+        .item-card {
+            transition: transform 0.2s;
+        }
+        .item-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-light p-3 shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Grocery1</a></li>
+                    <li class="breadcrumb-item"><a href="#">Sports</a></li>
+                    <li class="breadcrumb-item"><a href="#">Casual</a></li>
+                </ol>
+            </nav>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+            <a href="checkout.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <div class="container mt-4">
+        <h2 class="mb-4">Grocery Items</h2>
+        <div class="row">
+            <!-- Item Cards -->
+            <div class="col-md-4 mb-4">
+                <div class="card item-card">
+                    <img src="https://via.placeholder.com/300x200?text=Item+1" class="card-img-top" alt="Grocery Item 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Organic Apples</h5>
+                        <p class="card-text">$3.00</p>
+                        <button class="btn btn-primary add-to-cart" data-item="Organic Apples" data-price="3.00">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card item-card">
+                    <img src="https://via.placeholder.com/300x200?text=Item+2" class="card-img-top" alt="Grocery Item 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Bananas</h5>
+                        <p class="card-text">$1.50</p>
+                        <button class="btn btn-primary add-to-cart" data-item="Bananas" data-price="1.50">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card item-card">
+                    <img src="https://via.placeholder.com/300x200?text=Item+3" class="card-img-top" alt="Grocery Item 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Fresh Spinach</h5>
+                        <p class="card-text">$2.00</p>
+                        <button class="btn btn-primary add-to-cart" data-item="Fresh Spinach" data-price="2.00">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card item-card">
+                    <img src="https://via.placeholder.com/300x200?text=Item+4" class="card-img-top" alt="Grocery Item 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Organic Tomatoes</h5>
+                        <p class="card-text">$2.50</p>
+                        <button class="btn btn-primary add-to-cart" data-item="Organic Tomatoes" data-price="2.50">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card item-card">
+                    <img src="https://via.placeholder.com/300x200?text=Item+5" class="card-img-top" alt="Grocery Item 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Almond Milk</h5>
+                        <p class="card-text">$3.50</p>
+                        <button class="btn btn-primary add-to-cart" data-item="Almond Milk" data-price="3.50">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card item-card">
+                    <img src="https://via.placeholder.com/300x200?text=Item+6" class="card-img-top" alt="Grocery Item 6">
+                    <div class="card-body">
+                        <h5 class="card-title">Whole Grain Bread</h5>
+                        <p class="card-text">$2.80</p>
+                        <button class="btn btn-primary add-to-cart" data-item="Whole Grain Bread" data-price="2.80">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and Font Awesome JS -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let cartCount = 0;
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                cartCount++;
+                document.getElementById('cartCount').innerText = cartCount;
+
+                // Store cart items in localStorage (optional)
+                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                const itemName = this.getAttribute('data-item');
+                const itemPrice = parseFloat(this.getAttribute('data-price'));
+
+                // Check if item is already in the cart
+                const existingItem = cartItems.find(item => item.name === itemName);
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cartItems.push({ name: itemName, price: itemPrice, quantity: 1 });
+                }
+
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            });
+        });
+    </script>
+</body>
+</html>

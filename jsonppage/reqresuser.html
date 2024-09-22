@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paginated User Table with Bootstrap 5</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom styles for table */
+    table {
+      margin-top: 20px;
+    }
+
+    th, td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .table-container {
+      margin-top: 40px;
+    }
+
+    .pagination {
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="bg-primary text-white text-center py-3">
+    <h1>User Management</h1>
+  </header>
+
+  <!-- Content Section -->
+  <div class="container">
+    <div class="table-container">
+      <h2 class="text-center my-4">User List</h2>
+      <!-- Table for Users -->
+      <table class="table table-hover table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Avatar</th>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+          <!-- User data will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <nav>
+      <ul class="pagination" id="pagination">
+        <!-- Pagination items will be dynamically inserted here -->
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>Footer © 2024 Company Name. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap 5 JS, Popper.js, and Axios for API calls -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+    // Function to get users from API
+    function getUsers(page = 1) {
+      axios.get('https://reqres.in/api/users?page=' + page)
+        .then(response => {
+          const users = response.data.data;
+          const totalPages = response.data.total_pages;
+          renderUsers(users);
+          renderPagination(totalPages, page);
+        })
+        .catch(error => {
+          console.error('Error fetching users:', error);
+        });
+    }
+
+    // Function to render user data in the table
+    function renderUsers(users) {
+      const userTableBody = document.getElementById('userTableBody');
+      userTableBody.innerHTML = ''; // Clear existing rows
+
+      users.forEach(user => {
+        const userRow = `
+          <tr>
+            <td><img src="${user.avatar}" alt="Avatar" class="rounded-circle" width="50"></td>
+            <td>${user.id}</td>
+            <td>${user.first_name}</td>
+            <td>${user.last_name}</td>
+            <td>${user.email}</td>
+          </tr>
+        `;
+        userTableBody.innerHTML += userRow;
+      });
+    }
+
+    // Function to render pagination
+    function renderPagination(totalPages, currentPage) {
+      const pagination = document.getElementById('pagination');
+      pagination.innerHTML = ''; // Clear existing pagination
+
+      for (let page = 1; page <= totalPages; page++) {
+        const activeClass = (page === currentPage) ? 'active' : '';
+        const pageItem = `
+          <li class="page-item ${activeClass}">
+            <a class="page-link" href="#" onclick="getUsers(${page})">${page}</a>
+          </li>
+        `;
+        pagination.innerHTML += pageItem;
+      }
+    }
+
+    // Initial load
+    getUsers(); // Load page 1 by default
+  </script>
+
+</body>
+</html>

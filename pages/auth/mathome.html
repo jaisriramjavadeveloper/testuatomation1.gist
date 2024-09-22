@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrimony Page</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .header {
+      background-color: #ff6600;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .form-section {
+      background-color: white;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-section h2 {
+      color: #ff6600;
+    }
+    .form-label {
+      font-weight: bold;
+    }
+    .blank-image {
+      width: 100%;
+      height: 200px;
+      background-color: #ddd;
+      margin-bottom: 20px;
+    }
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Matrimony Registration</h1>
+    <p>Find your perfect match with our platform!</p>
+  </div>
+
+  <!-- Main Section -->
+  <div class="container">
+    <div class="row">
+      <!-- Left Section (Blank Image) -->
+      <div class="col-lg-6">
+        <div class="blank-image"></div>
+      </div>
+
+      <!-- Right Section (Form) -->
+      <div class="col-lg-6">
+        <div class="form-section">
+          <h2>Register Now</h2>
+          <form>
+            <div class="mb-3">
+              <label for="fullname" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="fullname" placeholder="Enter your full name" required>
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <select class="form-select" id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Register Now</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Info Section -->
+    <div class="form-section text-center">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="blank-image"></div>
+          <h4>Easy Registration</h4>
+          <p>Register with your basic details to get started.</p>
+        </div>
+        <div class="col-lg-4">
+          <div class="blank-image"></div>
+          <h4>Find Your Match</h4>
+          <p>Search through profiles to find your ideal partner.</p>
+        </div>
+        <div class="col-lg-4">
+          <div class="blank-image"></div>
+          <h4>Connect Securely</h4>
+          <p>Send messages securely and start your journey today.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2024 Matrimony. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap 5 JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
